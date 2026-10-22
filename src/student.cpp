@@ -75,12 +75,12 @@ bool enqueue(Queue& q, int nomor) {
     Node* baru = new Node{nomor, nullptr};
 
     if (isEmpty(q)) {
-     q.front = baru;
-     q.rear = baru;
+     q.depan = baru;
+     q.belakang = baru;
     }
     else {
-     q.rear->next = baru;
-     q.rear = baru;
+     q.belakang->next = baru;
+     q.belakang = baru;
     }
     return true;
 }
@@ -93,13 +93,13 @@ bool dequeue(Queue& q, int& nomor) {
      return false;
     }
 
-    Node* hapus = q.front;
+    Node* hapus = q.depan;
     nomor = hapus->data;
 
-    q.front = q.front->next;
+    q.depan = q.depan->next;
 
-    if (q.front == nullptr) {
-          q.rear == nullptr;
+    if (q.depan == nullptr) {
+          q.belakang == nullptr;
     }
     delete hapus;
     return true;
@@ -114,8 +114,8 @@ void clear(Queue& q) {
      dequeue(q, nilai);
     }
 
-    q.front = nullptr;
-    q.rear = nullptr;
+    q.depan = nullptr;
+    q.belakang = nullptr;
 }
 
 // =============================================================================
